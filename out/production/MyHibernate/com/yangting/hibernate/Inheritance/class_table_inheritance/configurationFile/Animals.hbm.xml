@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-7 19:33:37 by Hibernate Tools 3.4.0.CR1 -->
+
+<hibernate-mapping package="com.yangting.hibernate.Inheritance.class_table_inheritance.configurationFile">
+    <class name="Animals" table="ttt_animals" lazy="false">
+        <id name="id" type="java.lang.String">
+            <column name="animals_id"/>
+            <generator class="uuid"/>
+        </id>
+
+        <!--父类中的普通属性-->
+        <property name="name" column="name" type="java.lang.String"/>
+        <property name="sex" column="sex" type="java.lang.Boolean"/>
+
+
+        <!--Joined-subclass标签必须要包含一个key标签，这个标签指定了子类和父类之间是通过哪个字段来关联的-->
+        <!--子类声明-->
+        <joined-subclass name="Pig" table="ttt_pig">
+            <key column="pid"/>
+            <!--子类中的属性声明-->
+            <property name="weight" column="weight"/>
+        </joined-subclass>
+        <joined-subclass name="Bird" table="ttt_bird">
+            <key column="bid"/>
+            <property name="height" column="height"/>
+        </joined-subclass>
+
+    </class>
+</hibernate-mapping>
+

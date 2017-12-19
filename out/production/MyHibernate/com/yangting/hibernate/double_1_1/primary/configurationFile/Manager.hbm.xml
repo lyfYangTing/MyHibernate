@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-7 19:33:37 by Hibernate Tools 3.4.0.CR1 -->
+
+<hibernate-mapping package="com.yangting.hibernate.double_1_1.primary.configurationFile">
+    <class name="Manager" table="manager_pri">
+        <!-- manager的主键来源于department，也就是共享department的主键 -->
+        <id name="mgrId" type="java.lang.String">
+            <column name="mgr_id"/>
+            <generator class="foreign">
+                <param name="property">department</param>
+            </generator>
+        </id>
+
+        <property name="mgrName" type="java.lang.String">
+            <column name="mgr_name"/>
+        </property>
+
+        <!--由于在申明主键的时候已经将关系写清楚了，所以在这里没有column这个属性。按平常的习惯，我们会在这里写上column="数据库中外键字段属性名称。"-->
+        <!--constrained属性：就是表明我们的主键当外键使用了。 这个属性两个作用，一是通知这种对应关系在上面已经写过了，所以这里才不需要写column，二是表明这种关系是什么，也就是主键当外键。
+　　　　　　其实还有一个级联关系的作用，默认cascade。-->
+        <!-- one-to-one指示hibernate如何加载其关联对象，默认根据主键加载,也就是拿到关系字段值，根据对端的主键来加载关联对象
+         constrained="true表示，当前主键(person的主键)还是一个外键,参照了对端的主键（IdCard的主键），也就是会生成外键约束语句-->
+        <!--one-to-one（元素）懒加载分析：-->
+        <!--必须同时满足下面的三个条件时才能实现懒散加载：
+            1).lazy!=false (lazy缺省方式就!=false)
+            2).constrained=true
+            3).fetch=select(fetch缺省方式即为select)-->
+        <!--(因为主表不能有constrained=true，所以主表没有懒加载功能)。
+           能够懒加载的对象都是被改写过的代理对象，当相关联的session没有关闭时，访问这些懒加载对象（代理对象）的属性（getId和getClass除外）时，
+           hibernate会初始化这些代理，或用Hibernate.initialize(proxy)来初始化代理对象；当相关联的session关闭后，再访问懒加载的对象将会出现异常。-->
+        <one-to-one name="department" constrained="true"/>
+    </class>
+</hibernate-mapping>

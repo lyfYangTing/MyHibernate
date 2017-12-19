@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	<!-- 配置数据库的基本信息 -->
+    	<property name="connection.username">root</property>
+    	<property name="connection.password">123456</property>
+    	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    	<property name="connection.url">jdbc:mysql://localhost:3306/hibernatetest</property>
+
+    	<!-- 配置hibernate的基本信息 -->
+
+    	<!-- hibernate所使用的数据库方言 -->
+    	<property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
+    	
+    	<!-- 执行操作时，是否在控制台打印SQL -->
+    	<property name="show_sql">true</property>
+    	
+    	<!-- 是否对SQL进行格式化 -->
+    	<property name="format_sql">true</property>
+    	
+    	<!-- 指定自动生成数据表的策略 -->
+    	<property name="hbm2ddl.auto">update</property>
+
+    	<!-- sing_n_1 -->
+
+		<!--<mapping class="com.yangting.hibernate.single_n_1.annotation.Order"/>-->
+		<!--<mapping class="com.yangting.hibernate.single_n_1.annotation.Customer"/>-->
+
+		<!--<mapping resource="com/yangting/hibernate/single_n_1/configurationFile/Order.hbm.xml"/>-->
+		<!--<mapping resource="com/yangting/hibernate/single_n_1/configurationFile/Customer.hbm.xml"/>-->
+
+		<!-- double_n_1 -->
+
+		<!--<mapping class="com.yangting.hibernate.double_n_1.annotation.Order"/>-->
+		<!--<mapping class="com.yangting.hibernate.double_n_1.annotation.Customer"/>-->
+
+    	<!--<mapping resource="com/yangting/hibernate/double_n_1/configurationFile/Order.hbm.xml"/>-->
+    	<!--<mapping resource="com/yangting/hibernate/double_n_1/configurationFile/Customer.hbm.xml"/>-->
+
+		<!-- sing_1_1 foreign-->
+
+		<!--<mapping class="com.yangting.hibernate.single_1_1.foreign.annotation.IdCard"/>-->
+		<!--<mapping class="com.yangting.hibernate.single_1_1.foreign.annotation.Person"/>-->
+
+		<!--<mapping resource="com/yangting/hibernate/single_1_1/foreign/configurationFile/IdCard.hbm.xml"/>-->
+		<!--<mapping resource="com/yangting/hibernate/single_1_1/foreign/configurationFile/Person.hbm.xml"/>-->
+
+		<!-- sing_1_1 primary-->
+
+		<!--<mapping class="com.yangting.hibernate.single_1_1.primary.annotation.Person"/>-->
+		<!--<mapping class="com.yangting.hibernate.single_1_1.primary.annotation.IdCard"/>-->
+
+		<!--<mapping resource="com/yangting/hibernate/single_1_1/primary/configurationFile/Person.hbm.xml"/>-->
+		<!--<mapping resource="com/yangting/hibernate/single_1_1/primary/configurationFile/IdCard.hbm.xml"/>-->
+
+    	<!-- double_1_1 foreign -->
+
+    	<!--<mapping resource="com/yangting/hibernate/double_1_1/foreign/configurationFile/Manager.hbm.xml"/>-->
+    	<!--<mapping resource="com/yangting/hibernate/double_1_1/foreign/configurationFile/Department.hbm.xml"/>-->
+
+    	<!--<mapping class="com.yangting.hibernate.double_1_1.foreign.annotation.Department"/>-->
+		<!--<mapping class="com.yangting.hibernate.double_1_1.foreign.annotation.Manager"/>-->
+
+		<!-- double_1_1 primary -->
+
+
+    	<!--<mapping resource="com/yangting/hibernate/double_1_1/primary/configurationFile/Manager.hbm.xml"/>-->
+    	<!--<mapping resource="com/yangting/hibernate/double_1_1/primary/configurationFile/Department.hbm.xml"/>-->
+
+		<!--<mapping class="com.yangting.hibernate.double_1_1.primary.annotation.Department"/>-->
+		<!--<mapping class="com.yangting.hibernate.double_1_1.primary.annotation.Manager"/>-->
+    	
+    	<!-- single_n_n -->
+
+    	<!--<mapping resource="com/yangting/hibernate/single_n_n/configurationFile/Item.hbm.xml"/>-->
+    	<!--<mapping resource="com/yangting/hibernate/single_n_n/configurationFile/Category.hbm.xml"/>-->
+
+		<!--<mapping class="com.yangting.hibernate.single_n_n.annotation.Item"/>-->
+		<!--<mapping class="com.yangting.hibernate.single_n_n.annotation.Category"/>-->
+
+		<!-- double_n_n -->
+
+		<!--<mapping resource="com/yangting/hibernate/double_n_n/configurationFile/Item.hbm.xml"/>-->
+		<!--<mapping resource="com/yangting/hibernate/double_n_n/configurationFile/Category.hbm.xml"/>-->
+
+		<!--<mapping class="com.yangting.hibernate.double_n_n.annotation.Item"/>-->
+		<!--<mapping class="com.yangting.hibernate.double_n_n.annotation.Category"/>-->
+
+		<!--<mapping resource="com/yangting/hibernate/double_n_n/operationIntermediateTable/configurationFile/Order.hbm.xml"/>-->
+		<!--<mapping resource="com/yangting/hibernate/double_n_n/operationIntermediateTable/configurationFile/OrderItem.hbm.xml"/>-->
+		<!--<mapping resource="com/yangting/hibernate/double_n_n/operationIntermediateTable/configurationFile/Product.hbm.xml"/>-->
+
+		<!--<mapping class="com.yangting.hibernate.double_n_n.operationIntermediateTable.annotation.Order"/>-->
+		<!--<mapping class="com.yangting.hibernate.double_n_n.operationIntermediateTable.annotation.OrderItem"/>-->
+		<!--<mapping class="com.yangting.hibernate.double_n_n.operationIntermediateTable.annotation.Product"/>-->
+
+		<!-- inheritanceMapping class_table_inheritance -->
+
+		<!--<mapping resource="com/yangting/hibernate/Inheritance/class_table_inheritance/configurationFile/Animals.hbm.xml"/>-->
+
+		<mapping class="com.yangting.hibernate.Inheritance.class_table_inheritance.annotation.Animals"/>
+		<mapping class="com.yangting.hibernate.Inheritance.class_table_inheritance.annotation.Bird"/>
+		<mapping class="com.yangting.hibernate.Inheritance.class_table_inheritance.annotation.Pig"/>
+
+		<!-- inheritanceMapping single_table_inheritance -->
+
+		<!--<mapping resource="com/yangting/hibernate/Inheritance/single_table_inheritance/configurationFile/Animals.hbm.xml"/>-->
+
+		<!--<mapping class="com.yangting.hibernate.Inheritance.single_table_inheritance.annotation.Animals"/>-->
+		<!--<mapping class="com.yangting.hibernate.Inheritance.single_table_inheritance.annotation.Bird"/>-->
+		<!--<mapping class="com.yangting.hibernate.Inheritance.single_table_inheritance.annotation.Pig"/>-->
+
+		<!-- inheritanceMapping specific_table_inheritance -->
+
+		<!--<mapping resource="com/yangting/hibernate/Inheritance/specific_table_inheritance/configurationFile/Animals.hbm.xml"/>-->
+
+		<!--<mapping class="com.yangting.hibernate.Inheritance.specific_table_inheritance.annotation.Animals"/>-->
+		<!--<mapping class="com.yangting.hibernate.Inheritance.specific_table_inheritance.annotation.Bird"/>-->
+		<!--<mapping class="com.yangting.hibernate.Inheritance.specific_table_inheritance.annotation.Pig"/>-->
+
+	</session-factory>
+</hibernate-configuration>

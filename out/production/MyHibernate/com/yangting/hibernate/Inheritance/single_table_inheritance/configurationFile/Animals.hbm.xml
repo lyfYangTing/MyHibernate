@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-7 19:33:37 by Hibernate Tools 3.4.0.CR1 -->
+
+<hibernate-mapping package="com.yangting.hibernate.Inheritance.single_table_inheritance.configurationFile">
+    <class name="Animals" table="t_animals">
+        <id name="id" type="java.lang.String">
+            <column name="animals_id"/>
+            <generator class="uuid"/>
+        </id>
+        <!--discriminator，英文解释是“辨别器”。它是用于设置辨别数据的字段，放在id下面-->
+        <discriminator column="type" type="string"/>
+
+        <!--父类中的普通属性-->
+        <property name="name" column="name" type="java.lang.String"/>
+        <property name="sex" column="sex" type="java.lang.Boolean"/>
+
+        <!--单表映射使用discriminator和subclass标签
+        使用subclass来配置不同的类，设置discriminator-value，来辨别不同的数据。-->
+
+        <!--子类声明-->
+        <subclass name="Pig" discriminator-value="P">
+            <!--子类中的属性声明-->
+            <property name="weight" column="weight"/>
+        </subclass>
+        <subclass name="Bird" discriminator-value="B">
+            <property name="height" column="height"/>
+        </subclass>
+
+    </class>
+</hibernate-mapping>
+

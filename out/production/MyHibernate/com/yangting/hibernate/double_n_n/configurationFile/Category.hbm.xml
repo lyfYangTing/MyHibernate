@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-7 15:40:17 by Hibernate Tools 3.4.0.CR1 -->
+
+<hibernate-mapping package="com.yangting.hibernate.double_n_n.configurationFile">
+    <class name="Category" table="category">
+        <id name="categoryId" type="java.lang.String">
+            <column name="category_id"/>
+            <generator class="uuid"/>
+        </id>
+
+        <property name="catregoryName" type="java.lang.String">
+            <column name="category_name" />
+        </property>
+
+        <set name="items" table="categories_items" cascade="save-update" inverse="true">
+            <key column="cate_id"/>
+            <many-to-many class="Item" column="it_id"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-7 15:40:17 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.yangting.hibernate.double_n_n.operationIntermediateTable">
+    <class name="com.yangting.hibernate.double_n_n.operationIntermediateTable.configurationFile.Product" table="product">
+        <id name="id" type="java.lang.String">
+            <column name="product_id"/>
+            <generator class="uuid"/>
+        </id>
+
+        <property name="name" column="name" type="java.lang.String"/>
+        <property name="price" column="price" type="java.lang.Double"/>
+        <property name="description" column="description" type="java.lang.String"/>
+
+        <set name="orderitems" inverse="true" cascade="save-update" table="order_item">
+            <key column="product_id"/>
+            <one-to-many class="com.yangting.hibernate.double_n_n.operationIntermediateTable.configurationFile.OrderItem"/>
+        </set>
+    </class>
+</hibernate-mapping>

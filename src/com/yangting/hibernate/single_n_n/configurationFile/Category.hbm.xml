@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-7 15:40:17 by Hibernate Tools 3.4.0.CR1 -->
+
+<hibernate-mapping package="com.yangting.hibernate.single_n_n.configurationFile">
+    <class name="Category" table="category">
+        <id name="categoryId" type="java.lang.String">
+            <column name="category_id"/>
+            <generator class="uuid"/>
+        </id>
+
+        <property name="catregoryName" type="java.lang.String">
+            <column name="category_name"/>
+        </property>
+
+
+         <!--
+	     * table:指定中间表
+	     * many-to-many:指定多对多的关联关系
+	     * column:执行set集合中的持久化类在中间表的外键列的名称
+         -->
+        <set name="items" table="categories_items" cascade="save-update" >
+            <key>
+                <!--cate_id是本表对应在中间表的外键名-->
+                <column name="cate_id"/>
+            </key>
+
+            <!--it_id是关系表对应在中间表的外键名-->
+            <many-to-many class="Item" column="it_id"/>
+        </set>
+
+    </class>
+</hibernate-mapping>
